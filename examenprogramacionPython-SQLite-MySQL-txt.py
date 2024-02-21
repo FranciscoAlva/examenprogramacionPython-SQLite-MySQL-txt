@@ -1,8 +1,9 @@
 import sqlite3
-
+import sys
 
 #menu
 def menu():
+    print("Bienvenidos al examenprogramacionPython-SQLite-MySQL-txt")
     print("Escoge una opcion: ")
     print("1.-Insertar un registro")
     print("2.-Mostrar registros")
@@ -66,8 +67,27 @@ def menu():
         conexion.close()
     elif opcion == "5":
         print("Buscamos los registros")
+        nombre = input("Introduce el nombre del cliente: ")
+        conexion = sqlite3.connect("clientes.db")
+        cursor = conexion.cursor()
+        peticion = "SELECT * FROM clientes WHERE nombre LIKE '%"+nombre+"%'"
+        cursor.execute(peticion)
+        contador = 0
+        while True:
+            encontrado = True
+            contador += 1
+            fila = cursor.fetchone()
+            if fila is None:
+                break
+            print(fila)
+        if contador < 2:
+            print("No se encontro ningun registro")
+        conexion.commit()
+        conexion.close()
     elif opcion == "6":
         print("Salimos del programa")
+        sys.exit()
+        
     #menurecursivo
     menu()
 menu()
