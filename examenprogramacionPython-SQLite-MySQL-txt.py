@@ -42,6 +42,19 @@ def menu():
         conexion.close()
     elif opcion == "3":
         print("Modificamos los registros")
+        Identificador = input("Introduce el Id: ")
+        nombre = input("Introduce el nombre del cliente: ")
+        apellido = input("Introduce el apellido del cliente: ")
+        telefono = input("Introduce el telefono del cliente: ")
+        email = input("Introduce el email del cliente: ")
+        direccion = input("Introduce la direccion del cliente: ")
+        conexion = sqlite3.connect("clientes.db")
+        cursor = conexion.cursor()
+        peticion = "UPDATE clientes SET nombre = '"+nombre+"',apellido='"+apellido+"',telefono='"+telefono+"',email='"+email+"',direccion='"+direccion+"' WHERE Identificador="+Identificador+""
+        cursor.execute(peticion)
+        conexion.commit()
+        conexion.close()
+        print("Tu resgistro se modifico correctamente")
     elif opcion == "4":
         print("Eliminamos los registros")
     elif opcion == "5":
