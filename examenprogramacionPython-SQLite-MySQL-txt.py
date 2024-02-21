@@ -57,6 +57,13 @@ def menu():
         print("Tu resgistro se modifico correctamente")
     elif opcion == "4":
         print("Eliminamos los registros")
+        Identificador = input("Introduce el Id del registro a eliminar: ")
+        conexion = sqlite3.connect("clientes.db")
+        cursor = conexion.cursor()
+        peticion = "DELETE FROM clientes WHERE Identificador = "+Identificador+""
+        cursor.execute(peticion)
+        conexion.commit()
+        conexion.close()
     elif opcion == "5":
         print("Buscamos los registros")
     elif opcion == "6":
