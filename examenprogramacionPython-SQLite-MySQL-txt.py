@@ -29,9 +29,9 @@ def menu():
         print("Tu resgistro de guardo correctamente")
     elif opcion == "2":
         print("Mostramos los registros")
-        conexion = sqlite3.connect("discos.db")
+        conexion = sqlite3.connect("clientes.db")
         cursor = conexion.cursor()
-        peticion = "SELECT * FROM discos"
+        peticion = "SELECT * FROM clientes"
         cursor.execute(peticion)
         while True:
             fila = cursor.fetchone()
