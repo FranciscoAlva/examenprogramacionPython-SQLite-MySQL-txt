@@ -1,7 +1,8 @@
+#LIBRERIAS IMPORTADAS
 import sqlite3
 import sys
 
-#menu
+#MENU
 def menu():
     print("Bienvenidos al examenprogramacionPython-SQLite-MySQL-txt")
     print("Escoge una opcion: ")
@@ -13,7 +14,8 @@ def menu():
     print("6.-Salir")
     opcion = input("Escoge una opcion: ")
 
-    #if elif
+#if elif
+#GUARDAR
     if opcion == "1":
         print("Insertamos un registro")
         nombre = input("Introduce el nombre del cliente: ")
@@ -28,6 +30,8 @@ def menu():
         conexion.commit()
         conexion.close()
         print("Tu resgistro de guardo correctamente")
+
+#MOSTRAR
     elif opcion == "2":
         print("Mostramos los registros")
         conexion = sqlite3.connect("clientes.db")
@@ -41,6 +45,8 @@ def menu():
             print(fila)
         conexion.commit()
         conexion.close()
+
+#MODIFICAR
     elif opcion == "3":
         print("Modificamos los registros")
         Identificador = input("Introduce el Id: ")
@@ -56,6 +62,8 @@ def menu():
         conexion.commit()
         conexion.close()
         print("Tu resgistro se modifico correctamente")
+
+#ELIMINAR
     elif opcion == "4":
         print("Eliminamos los registros")
         Identificador = input("Introduce el Id del registro a eliminar: ")
@@ -65,6 +73,8 @@ def menu():
         cursor.execute(peticion)
         conexion.commit()
         conexion.close()
+
+#BUSCAR
     elif opcion == "5":
         print("Buscamos los registros")
         nombre = input("Introduce el nombre del cliente: ")
@@ -84,10 +94,12 @@ def menu():
             print("No se encontro ningun registro")
         conexion.commit()
         conexion.close()
+
+#SALIR        
     elif opcion == "6":
         print("Salimos del programa")
         sys.exit()
         
-    #menurecursivo
+#MENU RECURSIVO
     menu()
 menu()
